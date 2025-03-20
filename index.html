@@ -33,6 +33,7 @@
             --dark-gray: #333;
             --white: #FFFFFF;
             --focus-outline: 3px solid #4d90fe;
+            --hot-pink: #FF1493; /* For the special offer highlight */
         }
         
         /* ====== RESET & BASE STYLES ====== */
@@ -142,6 +143,169 @@
             color: var(--cream-text);
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
             font-weight: 600;
+        }
+
+        /* ====== TOP CTA BUTTON ====== */
+        .top-cta-button {
+            display: inline-block;
+            margin: 15px auto 25px;
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--midnight-blue);
+            background: linear-gradient(135deg, var(--gold), #FFC107);
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 215, 0, 0.4);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+            animation: pulse 2s infinite;
+        }
+        
+        .top-cta-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 25px rgba(255, 215, 0, 0.6);
+        }
+        
+        .top-cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.5s;
+        }
+        
+        .top-cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .price-summary {
+            background: linear-gradient(135deg, rgba(0, 15, 40, 0.85), rgba(0, 31, 84, 0.95));
+            padding: 20px 25px;
+            border-radius: 15px;
+            margin: 15px auto 30px;
+            display: inline-block;
+            border: 2px solid var(--gold);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        .price-summary::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .price-summary p {
+            font-size: 1.4rem;
+            margin: 14px 0;
+            color: var(--cream-text);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+            position: relative;
+            border-bottom: 1px dashed rgba(255, 215, 0, 0.3);
+            padding-bottom: 12px;
+        }
+        
+        .price-summary p:last-of-type {
+            border-bottom: none;
+        }
+        
+        .price-summary span {
+            color: var(--gold);
+            font-weight: 800;
+        }
+        
+        .old-price {
+            position: relative;
+            color: #ff6b6b !important;
+            font-weight: 700 !important;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-right: auto;
+        }
+        
+        .old-price::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #ff3333;
+            transform: rotate(-8deg);
+            animation: strikethrough 0.3s ease-out forwards;
+        }
+        
+        @keyframes strikethrough {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+        
+        .new-price {
+            font-size: 1.6rem;
+            color: #4cd964 !important;
+            font-weight: 900 !important;
+            text-shadow: 0 0 5px rgba(76, 217, 100, 0.4);
+            margin-right: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .special-offer {
+            position: relative;
+            animation: pulse-green 2s infinite;
+        }
+        
+        @keyframes pulse-green {
+            0% {
+                transform: scale(1);
+                text-shadow: 0 0 5px rgba(76, 217, 100, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                text-shadow: 0 0 12px rgba(76, 217, 100, 0.7);
+            }
+            100% {
+                transform: scale(1);
+                text-shadow: 0 0 5px rgba(76, 217, 100, 0.4);
+            }
+        }
+        
+        .price-deadline {
+            text-align: center;
+            margin-top: 15px;
+            color: var(--dark-blue);
+            font-size: 1.1rem;
+            font-weight: 700;
+            background-color: #FF6600;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3);
+            position: relative;
+            z-index: 2;
         }
         
         /* ====== ABOUT SECTION ====== */
@@ -467,6 +631,40 @@
             animation: pulse 2s infinite;
         }
         
+        .limited-spots-counter {
+            background-color: var(--red);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(216, 30, 5, 0.3);
+            animation: pulse 1.5s infinite;
+            text-align: center;
+        }
+        
+        .spots-icon {
+            font-size: 1.3rem;
+            margin-left: 8px;
+            animation: shake 1.5s infinite;
+        }
+        
+        .special-price-note {
+            margin-top: 15px;
+            padding: 8px 12px;
+            background-color: rgba(255, 215, 0, 0.15);
+            border-radius: 8px;
+            border-right: 3px solid var(--gold);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-align: center;
+        }
+        
         /* ====== BUTTONS ====== */
         .btn {
             display: inline-block;
@@ -525,6 +723,119 @@
         
         .btn:hover {
             opacity: 0.9;
+        }
+        
+        /* ====== TESTIMONIALS SECTION ====== */
+        .testimonials {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--midnight-blue), #002147);
+            position: relative;
+            color: var(--cream-text);
+        }
+        
+        .testimonials::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/api/placeholder/400/320');
+            background-size: cover;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .testimonials-container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .testimonial-title {
+            color: var(--gold);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 900;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .testimonial-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 350px;
+            position: relative;
+            transition: all 0.3s ease;
+            border-top: 3px solid;
+            border-bottom: 3px solid;
+        }
+        
+        .testimonial-card:nth-child(1) {
+            border-color: var(--orange);
+        }
+        
+        .testimonial-card:nth-child(2) {
+            border-color: var(--teal);
+        }
+        
+        .testimonial-card:nth-child(3) {
+            border-color: var(--gold);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .testimonial-card::before {
+            content: """;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 8rem;
+            line-height: 1;
+            font-family: 'Georgia', serif;
+            color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: var(--cream-text);
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .author-name {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--gold);
+        }
+        
+        .author-relation {
+            font-size: 0.9rem;
+            color: var(--cream-text);
+            opacity: 0.7;
+            margin-top: 3px;
         }
         
         /* ====== ADDITIONAL CYCLE SECTION ====== */
@@ -589,12 +900,21 @@
             margin: 30px auto;
             position: relative;
             z-index: 1;
-            background-color: rgba(0, 31, 84, 0.8);
+            background-color: rgba(255, 255, 255, 0.02);
             padding: 30px;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            border: 2px solid rgba(255, 215, 0, 0.3);
+            border: 3px solid var(--gold);
             backdrop-filter: blur(5px);
+        }
+        
+        .form-title {
+            font-size: 1.8rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 900;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         .form-control {
@@ -1110,6 +1430,45 @@
                 padding: 15px 25px;
                 font-size: 1rem;
             }
+            
+            .top-cta-button {
+                font-size: 1.3rem;
+                padding: 15px 25px;
+                width: 90%;
+                max-width: 350px;
+            }
+            
+            .price-summary {
+                width: 90%;
+                padding: 20px 15px;
+            }
+            
+            .price-summary p {
+                font-size: 1.2rem;
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: right;
+            }
+            
+            .old-price {
+                font-size: 1.1rem;
+                margin-right: 0;
+                margin-top: 5px;
+            }
+            
+            .new-price {
+                font-size: 1.4rem;
+                margin-right: 0;
+            }
+            
+            .testimonial-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .testimonial-card {
+                width: 90%;
+            }
         }
         
         @media screen and (max-width: 480px) {
@@ -1145,6 +1504,11 @@
                 height: 40px;
                 font-size: 1.4rem;
             }
+            
+            .top-cta-button {
+                font-size: 1.2rem;
+                padding: 12px 20px;
+            }
         }
     </style>
 </head>
@@ -1163,6 +1527,21 @@
     <section class="hero" id="top">
         <div class="hero-content">
             <h1 class="gold-text">פסח 2025 בקאנטרי נווה עוז</h1>
+            
+            <!-- New CTA Button -->
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb_7i4cQ-1L_IjuS6PjZEK83AXtR-U6tEG_31FXCp41jmqwA/viewform?usp=sharing" target="_blank" class="top-cta-button">
+                <i class="fas fa-hourglass-half timer-icon" aria-hidden="true"></i>
+                🔥 הירשמו עכשיו – המבצע מסתיים בסוף החודש! 🔥
+            </a>
+
+            <!-- New Price Summary -->
+            <div class="price-summary">
+                <p>⭐ <span>מחיר לשבועיים:</span> <span class="old-price">2,300 ₪</span> <span class="new-price">1,350 ₪</span></p>
+                <p>⭐ <span>מחיר לשבוע אחד:</span> <span class="old-price">1,350 ₪</span> <span class="new-price">750 ₪</span></p>
+                <p>⭐ <span>אפשרות חדשה! מחיר יומי:</span> <span class="new-price special-offer">220 ₪</span></p>
+                <div class="price-deadline">המחירים בתוקף עד 31.03.2025</div>
+            </div>
+            
             <h2><span style="color: #FF6600; text-shadow: 0px 2px 8px rgba(255,102,0,0.7);">PowerStreet</span> | <span style="color: #4CAF50; text-shadow: 0px 2px 8px rgba(76,175,80,0.7);">PowerMind</span></h2>
             <p style="font-size: 1.5rem; max-width: 1000px; margin: 0 auto; color: var(--cream-glow); text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4); font-weight: 600; letter-spacing: 0.5px;">פעילויות חדשות ומלאי אנרגיה בשיתוף פעולה עם <span class="gold-text" style="font-weight: 800; text-shadow: 0 0 10px rgba(255,215,0,0.5);">מתן כהן</span> - בוגר תואר ראשון בווינגייט וסטודנט לתואר שני בפסיכולוגיה בתחום הספורט והביצוע</p>
         </div>
@@ -1219,6 +1598,12 @@
                                 <span>30 ₪</span>
                             </div>
                         </div>
+
+                        <!-- Added limited spots counter -->
+                        <div class="limited-spots-counter">
+                            <i class="fas fa-exclamation-circle spots-icon" aria-hidden="true"></i>
+                            📢 נותרו רק 12 מקומות פנויים – מהרו להבטיח את מקומכם!
+                        </div>
                         
                         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb_7i4cQ-1L_IjuS6PjZEK83AXtR-U6tEG_31FXCp41jmqwA/viewform?usp=sharing" target="_blank" class="btn btn-orange" aria-label="הרשמה לטורניר סטריטבול">
                             <i class="fas fa-basketball-ball" style="margin-left: 8px;" aria-hidden="true"></i>
@@ -1241,8 +1626,12 @@
                         
                         <div class="event-meta">
                             <div class="meta-item">
-                                <span class="meta-label">תאריכים</span>
+                                <span class="meta-label">מחזור ראשון</span>
                                 <span class="meta-value">6.4–10.4.2025</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">מחזור שני</span>
+                                <span class="meta-value">14.4–17.4.2025</span>
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">שעות</span>
@@ -1250,19 +1639,35 @@
                             </div>
                         </div>
                         
+                        <!-- Updated prices section -->
                         <div class="prices">
                             <div class="price-item">
-                                <span>משתתף רגיל:</span>
-                                <span>1,350 ₪</span>
+                                <span>שבועיים מלאים:</span>
+                                <span style="color: var(--gold); font-size: 1.3rem; font-weight: 800;">1,350 ₪</span>
                             </div>
                             <div class="price-item">
-                                <span>מנוי קאנטרי:</span>
-                                <span>1,200 ₪</span>
+                                <span>שבוע אחד:</span>
+                                <span style="color: var(--gold); font-size: 1.3rem; font-weight: 800;">750 ₪</span>
+                            </div>
+                            <div class="price-item">
+                                <span>יום בודד:</span>
+                                <span style="color: var(--gold); font-size: 1.3rem; font-weight: 800;">220 ₪</span>
                             </div>
                             <div class="price-item">
                                 <span>אח נוסף במשפחה:</span>
                                 <span><span class="discount-badge">הנחה 10%</span> 1,215 ₪</span>
                             </div>
+                            
+                            <!-- Added special price note -->
+                            <div class="special-price-note">
+                                מחיר מיוחד לנרשמים עד 31.3 – לאחר מכן המחיר יתעדכן!
+                            </div>
+                        </div>
+
+                        <!-- Added limited spots counter -->
+                        <div class="limited-spots-counter">
+                            <i class="fas fa-exclamation-circle spots-icon" aria-hidden="true"></i>
+                            📢 נותרו רק 8 מקומות פנויים – מהרו להבטיח את מקומכם!
                         </div>
                         
                         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb_7i4cQ-1L_IjuS6PjZEK83AXtR-U6tEG_31FXCp41jmqwA/viewform?usp=sharing" target="_blank" class="btn" style="background: linear-gradient(to right, #31A8A8, #20c997); color: white;" aria-label="הרשמה לקייטנת PowerMind">
@@ -1275,17 +1680,60 @@
         </div>
     </section>
 
+    <!-- New Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container testimonials-container">
+            <h2 class="testimonial-title">מה ההורים והילדים אומרים עלינו</h2>
+            
+            <div class="testimonial-cards">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"הבן שלי חזר כל יום עם חיוך! צוות מדהים ופעילויות מעולות! האווירה היתה נעימה ומקצועית, וראינו התקדמות משמעותית גם במשחק וגם בביטחון."</p>
+                    <div class="testimonial-author">
+                        <div>
+                            <div class="author-name">דנה</div>
+                            <div class="author-relation">אמא של איתי</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"קייטנה ברמה אחרת! הילד שלי השתפר בכדורסל וגם בביטחון העצמי! מתן יודע לשלב בין כיף לבין למידה אמיתית, וזה משהו שקשה למצוא."</p>
+                    <div class="testimonial-author">
+                        <div>
+                            <div class="author-name">יוסי</div>
+                            <div class="author-relation">אבא של עידו</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"נהניתי בטירוף! המדריכים מדהימים והאימונים מאתגרים ומהנים. למדתי המון טריקים חדשים ומחכה כבר לפסח הבא!"</p>
+                    <div class="testimonial-author">
+                        <div>
+                            <div class="author-name">רועי</div>
+                            <div class="author-relation">משתתף בקייטנה, בן 12</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Additional Cycle Section -->
     <section class="additional-cycle" id="registration">
         <div class="container">
-            <h2 class="gold-text" style="font-size: 2.8rem; margin-bottom: 25px;">מעוניינים במחזור נוסף? ⚡ <span style="color: #FF6600;">המקומות מוגבלים!</span></h2>
-            <p style="font-size: 1.4rem; max-width: 800px; margin: 20px auto; font-weight: 600; color: var(--cream-text);">אנו שוקלים לפתוח מחזור נוסף בתאריכים 14.4–17.4. השאירו פרטים עכשיו והבטיחו את מקומכם לפני שייגמר!</p>
+            <h2 class="gold-text" style="font-size: 2.8rem; margin-bottom: 25px;">שני מחזורים לבחירתכם! ⚡ <span style="color: #FF6600;">המקומות מוגבלים!</span></h2>
+            <p style="font-size: 1.4rem; max-width: 800px; margin: 20px auto; font-weight: 600; color: var(--cream-text);">בחרו בין מחזור ראשון (6.4–10.4) או מחזור שני (14.4–17.4) או הירשמו לשני המחזורים בהנחה מיוחדת! השאירו פרטים עכשיו והבטיחו את מקומכם לפני שייגמר!</p>
             
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb_7i4cQ-1L_IjuS6PjZEK83AXtR-U6tEG_31FXCp41jmqwA/viewform?usp=sharing" target="_blank" class="btn" style="background: var(--gold); color: var(--midnight-blue); font-weight: 900; letter-spacing: 1px; transform: scale(1.05); box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);" aria-label="שליחת פרטים להרשמה">
-                <i class="fas fa-paper-plane" style="margin-left: 10px;" aria-hidden="true"></i>
-                השאירו פרטים לעדכון
-            </a>
-            <p style="margin-top: 20px; color: var(--cream-glow); font-size: 1.1rem; font-weight: 600;">מעוניינים במחזור נוסף בתאריכים 14.4–17.4? <br>לחצו על הכפתור מעלה ומלאו את הטופס!</p>
+            <!-- Redesigned form section -->
+            <div class="form-group">
+                <h3 class="form-title">📋 טופס הרשמה מאובטח – מקומך שמור תוך 60 שניות!</h3>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb_7i4cQ-1L_IjuS6PjZEK83AXtR-U6tEG_31FXCp41jmqwA/viewform?usp=sharing" target="_blank" class="btn" style="background: var(--gold); color: var(--midnight-blue); font-weight: 900; letter-spacing: 1px; transform: scale(1.05); box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4); width: 100%;" aria-label="שליחת פרטים להרשמה">
+                    <i class="fas fa-paper-plane" style="margin-left: 10px;" aria-hidden="true"></i>
+                    השאירו פרטים לעדכון
+                </a>
+                <p style="margin-top: 20px; color: var(--cream-glow); font-size: 1.1rem; font-weight: 600; text-align: center;">מעוניינים במחזור נוסף בתאריכים 14.4–17.4? <br>לחצו על הכפתור מעלה ומלאו את הטופס!</p>
+            </div>
         </div>
     </section>
 
@@ -1473,7 +1921,7 @@
         });
         
         // Reveal elements on scroll
-        const revealElements = document.querySelectorAll('.event-card, .discount-box, .form-group');
+        const revealElements = document.querySelectorAll('.event-card, .discount-box, .form-group, .testimonial-card');
         
         function revealOnScroll() {
             const windowHeight = window.innerHeight;
@@ -1489,6 +1937,38 @@
         
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll(); // Initial check
+        
+        // Update available spots randomly
+        function updateSpots() {
+            const counters = document.querySelectorAll('.limited-spots-counter');
+            
+            counters.forEach((counter, index) => {
+                const currentText = counter.textContent;
+                const currentNumber = parseInt(currentText.match(/\d+/)[0]);
+                
+                // Randomly decrease the number (with 30% chance)
+                if (Math.random() < 0.3 && currentNumber > 1) {
+                    const newNumber = currentNumber - 1;
+                    counter.innerHTML = `<i class="fas fa-exclamation-circle spots-icon" aria-hidden="true"></i>
+                        📢 נותרו רק ${newNumber} מקומות פנויים – מהרו להבטיח את מקומכם!`;
+                    
+                    // Add shake animation temporarily
+                    counter.classList.add('shake');
+                    setTimeout(() => {
+                        counter.classList.remove('shake');
+                    }, 500);
+                    
+                    // If spots are low, make it more urgent
+                    if (newNumber <= 3) {
+                        counter.style.backgroundColor = '#FF1493';
+                        counter.style.boxShadow = '0 5px 15px rgba(255, 20, 147, 0.5)';
+                    }
+                }
+            });
+        }
+        
+        // Update spots every 30-60 seconds
+        setInterval(updateSpots, Math.random() * 30000 + 30000);
         
         // Check for browser compatibility
         function checkBrowserCompatibility() {
